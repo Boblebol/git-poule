@@ -61,7 +61,7 @@ bash test/git-poule-test.sh && bash test/install-test.sh && bash test/site-test.
 
 ## GitHub Pages
 
-La landing page est un site statique sans build:
+La landing page est un site statique déployé par GitHub Actions:
 
 - `index.html`
 - `styles.css`
@@ -69,7 +69,11 @@ La landing page est un site statique sans build:
 - `assets/sounds/coq.wav`
 - `assets/sounds/poule.wav`
 
-Configure GitHub Pages sur la branche `main`, dossier `/`.
+Dans les réglages du dépôt GitHub, configure Pages avec:
+
+- Source: `GitHub Actions`
+
+Le workflow `.github/workflows/pages.yml` lance `bash test/site-test.sh`, prépare GitHub Pages, puis publie la racine du dépôt à chaque push sur `main`.
 
 ## Désinstallation
 

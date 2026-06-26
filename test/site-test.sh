@@ -23,6 +23,7 @@ assert_contains() {
 assert_file "index.html"
 assert_file "styles.css"
 assert_file "assets/git-poule-mascot.png"
+assert_file ".github/workflows/pages.yml"
 
 assert_contains "index.html" "styles.css"
 assert_contains "index.html" "Unicorn? Non. Poule."
@@ -34,5 +35,9 @@ assert_contains "index.html" "KO"
 assert_contains "index.html" "Alexandre Enouf"
 assert_contains "index.html" "https://alexandre-enouf.fr"
 assert_contains "index.html" "assets/git-poule-mascot.png"
+assert_contains ".github/workflows/pages.yml" "Deploy GitHub Pages"
+assert_contains ".github/workflows/pages.yml" "actions/configure-pages@v5"
+assert_contains ".github/workflows/pages.yml" "actions/upload-pages-artifact@v3"
+assert_contains ".github/workflows/pages.yml" "actions/deploy-pages@v4"
 
 echo "site tests passed"
