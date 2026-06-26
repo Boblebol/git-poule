@@ -49,8 +49,18 @@ Git discovers commands named `git-*` on `PATH`, so an executable named `git-poul
 ## Test
 
 ```sh
-bash test/git-poule-test.sh && bash test/install-test.sh
+bash test/git-poule-test.sh && bash test/install-test.sh && bash test/site-test.sh
 ```
+
+## GitHub Pages
+
+The landing page is a no-build static site:
+
+- `index.html`
+- `styles.css`
+- `assets/git-poule-mascot.png`
+
+Serve it directly from the repository root with GitHub Pages.
 
 ## Uninstall
 
