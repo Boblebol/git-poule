@@ -1,0 +1,24 @@
+#!/bin/sh
+
+git pull "$@"
+status=$?
+
+if [ "$status" -ne 0 ]; then
+  exit "$status"
+fi
+
+if command -v say >/dev/null 2>&1; then
+  say "cot cot cot" >/dev/null 2>&1 || true
+else
+  printf '\a' >&2 || true
+fi
+
+cat <<'CHICKEN'
+     \\
+      \\  cot cot
+       \\
+        __
+      <(o )___
+       ( ._> /
+        `---'
+CHICKEN
