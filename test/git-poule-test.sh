@@ -90,6 +90,8 @@ test_failure_preserves_exit_and_skips_chicken() {
   assert_contains "$tmp_dir/git-args-fail" "pull --ff-only"
   assert_contains "$tmp_dir/stdout-fail" "git pull failed"
   assert_not_contains "$tmp_dir/stdout-fail" "cot cot"
+  assert_contains "$tmp_dir/stdout-fail" "KO"
+  assert_contains "$tmp_dir/stdout-fail" "pull rate"
   if [ -e "$tmp_dir/say-args-fail" ]; then
     echo "Expected say not to be called on failure" >&2
     exit 1

@@ -1,9 +1,32 @@
 #!/bin/sh
 
+print_happy_chicken() {
+  cat <<'CHICKEN'
+     \\
+      \\  cot cot
+       \\
+        __
+      <(o )___
+       ( ._> /
+        `---'
+CHICKEN
+}
+
+print_ko_chicken() {
+  cat <<'CHICKEN'
+     pull rate
+        __
+      <(x )___
+       ( ._> /
+        `---'  KO
+CHICKEN
+}
+
 git pull "$@"
 status=$?
 
 if [ "$status" -ne 0 ]; then
+  print_ko_chicken
   exit "$status"
 fi
 
@@ -13,12 +36,4 @@ else
   printf '\a' >&2 || true
 fi
 
-cat <<'CHICKEN'
-     \\
-      \\  cot cot
-       \\
-        __
-      <(o )___
-       ( ._> /
-        `---'
-CHICKEN
+print_happy_chicken
