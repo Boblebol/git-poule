@@ -2,3 +2,4 @@
 .superpowers/
 AGENTS.md
 *.wav
+!assets/sounds/*.wav
