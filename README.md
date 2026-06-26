@@ -1,8 +1,24 @@
 # git-poule
 
-`git poule` is a playful wrapper around `git pull`.
+`git poule` is `git pull` with poultry-grade feedback.
 
-It runs `git pull` with the arguments you pass, then, if the pull succeeds, makes a chicken-like sound and prints a chicken in ASCII art.
+It runs the real `git pull`, forwards your arguments, keeps Git's exit code, and adds just enough barnyard ceremony to make dependency updates feel less corporate.
+
+```sh
+git poule --rebase
+```
+
+On success: chicken sound plus happy chicken.
+
+On failure: no sound, same non-zero exit code, KO chicken.
+
+```text
+     pull rate
+        __
+      <(x )___
+       ( ._> /
+        `---'  KO
+```
 
 ## Install
 
@@ -29,6 +45,12 @@ git poule --ff-only origin main
 ```
 
 Git discovers commands named `git-*` on `PATH`, so an executable named `git-poule` can be run as `git poule`.
+
+## Test
+
+```sh
+bash test/git-poule-test.sh && bash test/install-test.sh
+```
 
 ## Uninstall
 
