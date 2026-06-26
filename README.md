@@ -1,16 +1,49 @@
 # git-poule
 
-`git poule` is `git pull` with poultry-grade feedback.
+`git poule`, c'est `git pull` avec un retour sonore et aviaire.
 
-It runs the real `git pull`, forwards your arguments, keeps Git's exit code, and adds just enough barnyard ceremony to make dependency updates feel less corporate.
+Il lance le vrai `git pull`, transmet tes arguments, conserve le code de sortie de Git, puis ajoute la cérémonie nationale:
+
+- pull OK: son `coq.wav` + poulet content;
+- pull KO: son `poule.wav` + poulet KO;
+- si les WAV ne peuvent pas être joués: fallback `say "cot cot cot"`, puis cloche terminal.
 
 ```sh
 git poule --rebase
 ```
 
-On success: chicken sound plus happy chicken.
+## Installation
 
-On failure: no sound, same non-zero exit code, KO chicken.
+```sh
+./install.sh
+```
+
+L'installateur copie:
+
+- `git-poule` dans `/usr/local/bin` si possible, sinon `$HOME/.local/bin`;
+- les sons dans un dossier `share/git-poule` associé.
+
+Installation explicite:
+
+```sh
+INSTALL_DIR="$HOME/.local/bin" ./install.sh
+```
+
+Assure-toi que le dossier d'installation est dans ton `PATH`.
+
+## Utilisation
+
+```sh
+git poule
+git poule --rebase
+git poule --ff-only origin main
+```
+
+Git découvre les commandes nommées `git-*` dans le `PATH`: un exécutable `git-poule` devient donc disponible via `git poule`.
+
+## Mode KO
+
+Quand `git pull` échoue, `git-poule` garde le même code de sortie et affiche:
 
 ```text
      pull rate
@@ -20,33 +53,7 @@ On failure: no sound, same non-zero exit code, KO chicken.
         `---'  KO
 ```
 
-## Install
-
-```sh
-./install.sh
-```
-
-The installer copies `git-poule` into `/usr/local/bin` when writable. Otherwise it uses `$HOME/.local/bin`.
-
-To choose a directory explicitly:
-
-```sh
-INSTALL_DIR="$HOME/.local/bin" ./install.sh
-```
-
-Make sure the install directory is in your `PATH`.
-
-## Usage
-
-```sh
-git poule
-git poule --rebase
-git poule --ff-only origin main
-```
-
-Git discovers commands named `git-*` on `PATH`, so an executable named `git-poule` can be run as `git poule`.
-
-## Test
+## Tests
 
 ```sh
 bash test/git-poule-test.sh && bash test/install-test.sh && bash test/site-test.sh
@@ -54,20 +61,22 @@ bash test/git-poule-test.sh && bash test/install-test.sh && bash test/site-test.
 
 ## GitHub Pages
 
-The landing page is a no-build static site:
+La landing page est un site statique sans build:
 
 - `index.html`
 - `styles.css`
 - `assets/git-poule-mascot.png`
+- `assets/sounds/coq.wav`
+- `assets/sounds/poule.wav`
 
-Serve it directly from the repository root with GitHub Pages.
+Configure GitHub Pages sur la branche `main`, dossier `/`.
 
-## Uninstall
+## Désinstallation
 
-Remove the installed executable:
+Supprime l'exécutable installé:
 
 ```sh
 rm "$HOME/.local/bin/git-poule"
 ```
 
-If you installed to another directory, remove `git-poule` from that directory instead.
+Si tu as installé ailleurs, supprime `git-poule` de ce dossier et les sons du dossier `share/git-poule` correspondant.
