@@ -15,8 +15,18 @@ if [ ! -x "$install_dir/git-poule" ]; then
   exit 1
 fi
 
+if [ ! -x "$install_dir/git-picore" ]; then
+  echo "Expected installed git-picore to be executable" >&2
+  exit 1
+fi
+
 if ! cmp -s "$repo_root/git-poule" "$install_dir/git-poule"; then
   echo "Expected installed git-poule to match source script" >&2
+  exit 1
+fi
+
+if ! cmp -s "$repo_root/git-picore" "$install_dir/git-picore"; then
+  echo "Expected installed git-picore to match source script" >&2
   exit 1
 fi
 
@@ -32,6 +42,11 @@ fi
 
 if ! grep -Fq "git poule" "$tmp_dir/stdout"; then
   echo "Expected installer output to mention git poule" >&2
+  exit 1
+fi
+
+if ! grep -Fq "git picore" "$tmp_dir/stdout"; then
+  echo "Expected installer output to mention git picore" >&2
   exit 1
 fi
 

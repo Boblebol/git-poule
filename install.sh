@@ -3,10 +3,16 @@ set -eu
 
 script_dir=$(CDPATH= cd "$(dirname "$0")" && pwd)
 source_file="$script_dir/git-poule"
+picore_source_file="$script_dir/git-picore"
 sound_source_dir="$script_dir/assets/sounds"
 
 if [ ! -f "$source_file" ]; then
   echo "Script source git-poule introuvable: $source_file" >&2
+  exit 1
+fi
+
+if [ ! -f "$picore_source_file" ]; then
+  echo "Script source git-picore introuvable: $picore_source_file" >&2
   exit 1
 fi
 
@@ -37,9 +43,12 @@ fi
 mkdir -p "$install_dir"
 mkdir -p "$share_dir"
 install_path="$install_dir/git-poule"
+picore_install_path="$install_dir/git-picore"
 
 cp "$source_file" "$install_path"
 chmod 755 "$install_path"
+cp "$picore_source_file" "$picore_install_path"
+chmod 755 "$picore_install_path"
 cp "$sound_source_dir/coq.wav" "$share_dir/coq.wav"
 cp "$sound_source_dir/poule.wav" "$share_dir/poule.wav"
 
@@ -52,5 +61,7 @@ case ":$PATH:" in
 esac
 
 echo "Installe git-poule dans $install_path"
+echo "Installe git-picore dans $picore_install_path"
 echo "Installe les sons dans $share_dir"
 echo "Lance : git poule"
+echo "Lance : git picore"

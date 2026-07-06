@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="git-poule est git pull avec retour sonore aviaire.">
-    <title>git-poule - Unicorn? Non. Poule.</title>
+    <meta name="description" content="git-poule ajoute un retour sonore aviaire a git pull et git cherry-pick.">
+    <title>git-poule - Poule et Picore</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -15,6 +15,7 @@
       </a>
       <nav>
         <a href="#install">Installer</a>
+        <a href="#picore">Picore</a>
         <a href="#ko">Mode KO</a>
         <a href="https://github.com/Boblebol/git-poule" aria-label="Dépôt GitHub">GitHub</a>
       </nav>
@@ -24,10 +25,10 @@
       <section class="hero" aria-labelledby="hero-title">
         <img class="hero-mascot" src="assets/git-poule-mascot.png" alt="Blue white red git-poule chicken mascot">
         <div class="hero-copy">
-          <p class="eyebrow">Le pull qui finit en cocorico</p>
+          <p class="eyebrow">Le pull qui chante, le cherry-pick qui picore</p>
           <h1 id="hero-title">Unicorn? Non. Poule.</h1>
           <p class="hero-lede">
-            `git pull`, mais avec un coq quand tout va bien et une poule KO quand Git dit non.
+            `git pull` et `git cherry-pick`, mais avec un coq quand tout va bien et une poule KO quand Git dit non.
           </p>
           <div class="hero-actions" id="install">
             <a class="button primary" href="#copy-install">Installer la bête</a>
@@ -60,19 +61,42 @@ Already up to date.
           <p class="section-kicker">Le pitch en 7 secondes</p>
           <h2>Un wrapper minuscule. Une ambition nationale.</h2>
           <p>
-            Git fait le pull. La poule fait le panache. Les arguments sont transmis, le code retour est préservé, et personne ne touche à ta config Git.
+            Git fait le pull ou le cherry-pick. La poule fait le panache. Les arguments sont transmis, le code retour est préservé, et personne ne touche à ta config Git.
           </p>
           <pre id="copy-install"><code>./install.sh
-git poule --ff-only origin main</code></pre>
+git poule --ff-only origin main
+git picore abc123</code></pre>
         </div>
+      </section>
+
+      <section class="picore-band" id="picore" aria-label="git-picore cherry-pick mode">
+        <div class="picore-copy">
+          <p class="section-kicker">Nouveau dans le poulailler</p>
+          <h2>Cherry-pick? Picore.</h2>
+          <p>
+            `git picore` appelle le vrai `git cherry-pick`, transmet tes options et garde le même code de sortie. La différence, c'est qu'un commit importé proprement mérite un petit cocorico.
+          </p>
+        </div>
+        <pre class="picore-terminal"><code>$ git picore 4f8c2ab
+[main 91d2c31] Corrige le bouton trop sérieux
+ Date: Fri Jul 3 14:12:00 2026 +0200
+ 1 file changed, 3 insertions(+)
+
+     \\
+      \\  cot cot
+       \\
+        __
+      &lt;(o )___
+       ( ._&gt; /
+        `---'</code></pre>
       </section>
 
       <section class="ko-band" id="ko" aria-label="KO failure mode">
         <div class="ko-copy">
           <p class="section-kicker">Mode catastrophe contrôlée</p>
-          <h2>Quand le pull rate, la poule tombe.</h2>
+          <h2>Quand Git rate, la poule tombe.</h2>
           <p>
-            Pas de chant de victoire sur échec. `git-poule` joue `poule.wav`, garde le code non-zéro de Git et affiche un KO lisible pour ton terminal.
+            Pas de chant de victoire sur échec. `git-poule` et `git-picore` jouent `poule.wav`, gardent le code non-zéro de Git et affichent un KO lisible pour ton terminal.
           </p>
         </div>
         <pre class="ko-terminal"><code>$ git poule --ff-only
@@ -90,7 +114,7 @@ fatal: Not possible to fast-forward, aborting.
       <p>
         Pondu avec panache par
         <a href="https://alexandre-enouf.fr">Alexandre Enouf</a>.
-        Si le poulet merge, c'est qu'il avait raison depuis le début.
+        Si le poulet picore ton commit, c'est qu'il avait raison depuis le début.
       </p>
     </footer>
   </body>

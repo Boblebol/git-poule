@@ -198,6 +198,7 @@ h2 {
 }
 
 .terminal-band,
+.picore-band,
 .ko-band {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.84fr);
@@ -211,12 +212,17 @@ h2 {
   background: var(--white);
 }
 
+.picore-band {
+  background: #e8fff1;
+}
+
 .ko-band {
   background: #f3f5ff;
 }
 
 .terminal,
 .install-copy pre,
+.picore-terminal,
 .ko-terminal {
   border: 2px solid var(--line);
   border-radius: 8px;
@@ -271,6 +277,7 @@ code {
 
 .terminal pre,
 .install-copy pre,
+.picore-terminal,
 .ko-terminal {
   padding: clamp(18px, 3vw, 28px);
   font-size: clamp(14px, 1.55vw, 18px);
@@ -283,6 +290,7 @@ code {
 }
 
 .terminal-band p,
+.picore-band p,
 .ko-band p {
   color: var(--muted);
   font-weight: 650;
@@ -335,6 +343,7 @@ code {
   }
 
   .terminal-band,
+  .picore-band,
   .ko-band {
     grid-template-columns: 1fr;
   }

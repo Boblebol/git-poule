@@ -35,10 +35,10 @@ write_fake_git() {
 #!/usr/bin/env bash
 printf '%s\n' "$*" > "$FAKE_GIT_ARGS_FILE"
 if [ "${FAKE_GIT_EXIT:-0}" -ne 0 ]; then
-  echo "git pull failed"
+  echo "git $1 failed"
   exit "$FAKE_GIT_EXIT"
 fi
-echo "git pull succeeded"
+echo "git $1 succeeded"
 FAKE_GIT
   chmod +x "$bin_dir/git"
 }
@@ -144,7 +144,69 @@ test_fallback_uses_say_when_wav_cannot_play() {
   assert_contains "$tmp_dir/stdout-fallback" "cot cot"
 }
 
+test_picore_success_forwards_args_and_prints_chicken() {
+  write_fake_git
+  write_fake_say
+  write_fake_afplay
+  write_fake_sounds "$tmp_dir/sounds-picore"
+
+  export PATH="$bin_dir:$PATH"
+  export FAKE_GIT_ARGS_FILE="$tmp_dir/git-args-picore"
+  export FAKE_SAY_ARGS_FILE="$tmp_dir/say-args-picore"
+  export FAKE_AFPLAY_ARGS_FILE="$tmp_dir/afplay-args-picore"
+  export GIT_POULE_SOUND_DIR="$tmp_dir/sounds-picore"
+  export FAKE_GIT_EXIT=0
+
+  "$repo_root/git-picore" abc123 > "$tmp_dir/stdout-picore" 2> "$tmp_dir/stderr-picore"
+
+  assert_contains "$tmp_dir/git-args-picore" "cherry-pick abc123"
+  assert_contains "$tmp_dir/afplay-args-picore" "coq.wav"
+  assert_contains "$tmp_dir/stdout-picore" "git cherry-pick succeeded"
+  assert_contains "$tmp_dir/stdout-picore" "cot cot"
+  if [ -e "$tmp_dir/say-args-picore" ]; then
+    echo "Expected say not to be called when picore success WAV plays" >&2
+    exit 1
+  fi
+}
+
+test_picore_failure_preserves_exit_and_prints_ko() {
+  write_fake_git
+  write_fake_say
+  write_fake_afplay
+  write_fake_sounds "$tmp_dir/sounds-picore-fail"
+
+  export PATH="$bin_dir:$PATH"
+  export FAKE_GIT_ARGS_FILE="$tmp_dir/git-args-picore-fail"
+  export FAKE_SAY_ARGS_FILE="$tmp_dir/say-args-picore-fail"
+  export FAKE_AFPLAY_ARGS_FILE="$tmp_dir/afplay-args-picore-fail"
+  export GIT_POULE_SOUND_DIR="$tmp_dir/sounds-picore-fail"
+  export FAKE_GIT_EXIT=9
+
+  set +e
+  "$repo_root/git-picore" feature-commit > "$tmp_dir/stdout-picore-fail" 2> "$tmp_dir/stderr-picore-fail"
+  status="$?"
+  set -e
+
+  if [ "$status" -ne 9 ]; then
+    echo "Expected exit status 9, got $status" >&2
+    exit 1
+  fi
+
+  assert_contains "$tmp_dir/git-args-picore-fail" "cherry-pick feature-commit"
+  assert_contains "$tmp_dir/stdout-picore-fail" "git cherry-pick failed"
+  assert_not_contains "$tmp_dir/stdout-picore-fail" "cot cot"
+  assert_contains "$tmp_dir/stdout-picore-fail" "KO"
+  assert_contains "$tmp_dir/stdout-picore-fail" "picorage rate"
+  assert_contains "$tmp_dir/afplay-args-picore-fail" "poule.wav"
+  if [ -e "$tmp_dir/say-args-picore-fail" ]; then
+    echo "Expected say not to be called when picore failure WAV plays" >&2
+    exit 1
+  fi
+}
+
 test_success_forwards_args_and_prints_chicken
 test_failure_preserves_exit_and_skips_chicken
 test_fallback_uses_say_when_wav_cannot_play
+test_picore_success_forwards_args_and_prints_chicken
+test_picore_failure_preserves_exit_and_prints_ko
 echo "git-poule tests passed"

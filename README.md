@@ -1,15 +1,19 @@
 # git-poule
 
 `git poule`, c'est `git pull` avec un retour sonore et aviaire.
+`git picore`, c'est `git cherry-pick` avec la même cérémonie.
 
-Il lance le vrai `git pull`, transmet tes arguments, conserve le code de sortie de Git, puis ajoute la cérémonie nationale:
+Chaque commande lance le vrai Git, transmet tes arguments, conserve le code de sortie, puis ajoute la cérémonie nationale:
 
-- pull OK: son `coq.wav` + poulet content;
-- pull KO: son `poule.wav` + poulet KO;
+- `git poule` OK: son `coq.wav` + poulet content;
+- `git poule` KO: son `poule.wav` + poulet KO;
+- `git picore` OK: son `coq.wav` + poulet content;
+- `git picore` KO: son `poule.wav` + poulet KO;
 - si les WAV ne peuvent pas être joués: fallback `say "cot cot cot"`, puis cloche terminal.
 
 ```sh
 git poule --rebase
+git picore abc123
 ```
 
 ## Installation
@@ -20,7 +24,7 @@ git poule --rebase
 
 L'installateur copie:
 
-- `git-poule` dans `/usr/local/bin` si possible, sinon `$HOME/.local/bin`;
+- `git-poule` et `git-picore` dans `/usr/local/bin` si possible, sinon `$HOME/.local/bin`;
 - les sons dans un dossier `share/git-poule` associé.
 
 Installation explicite:
@@ -37,9 +41,12 @@ Assure-toi que le dossier d'installation est dans ton `PATH`.
 git poule
 git poule --rebase
 git poule --ff-only origin main
+git picore abc123
+git picore --continue
+git picore --abort
 ```
 
-Git découvre les commandes nommées `git-*` dans le `PATH`: un exécutable `git-poule` devient donc disponible via `git poule`.
+Git découvre les commandes nommées `git-*` dans le `PATH`: les exécutables `git-poule` et `git-picore` deviennent donc disponibles via `git poule` et `git picore`.
 
 ## Mode KO
 
@@ -47,6 +54,16 @@ Quand `git pull` échoue, `git-poule` garde le même code de sortie et affiche:
 
 ```text
      pull rate
+        __
+      <(x )___
+       ( ._> /
+        `---'  KO
+```
+
+Quand `git cherry-pick` échoue, `git-picore` garde aussi le même code de sortie et affiche:
+
+```text
+     picorage rate
         __
       <(x )___
        ( ._> /
@@ -81,6 +98,7 @@ Supprime l'exécutable installé:
 
 ```sh
 rm "$HOME/.local/bin/git-poule"
+rm "$HOME/.local/bin/git-picore"
 ```
 
-Si tu as installé ailleurs, supprime `git-poule` de ce dossier et les sons du dossier `share/git-poule` correspondant.
+Si tu as installé ailleurs, supprime `git-poule`, `git-picore` et les sons du dossier `share/git-poule` correspondant.

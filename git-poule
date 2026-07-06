@@ -1,6 +1,22 @@
 #!/bin/sh
 
 script_dir=$(CDPATH= cd "$(dirname "$0")" && pwd)
+program_name=${GIT_POULE_PROGRAM:-$(basename "$0")}
+
+case "$program_name" in
+  git-picore|picore)
+    git_command="cherry-pick"
+    failure_title="picorage rate"
+    ;;
+  git-poule|poule)
+    git_command="pull"
+    failure_title="pull rate"
+    ;;
+  *)
+    echo "Commande git-poule inconnue: $program_name" >&2
+    exit 64
+    ;;
+esac
 
 print_happy_chicken() {
   cat <<'CHICKEN'
@@ -15,8 +31,8 @@ CHICKEN
 }
 
 print_ko_chicken() {
+  printf '     %s\n' "$failure_title"
   cat <<'CHICKEN'
-     pull rate
         __
       <(x )___
        ( ._> /
@@ -82,7 +98,7 @@ play_named_sound() {
   play_sound_file "$sound_file" || fallback_sound
 }
 
-git pull "$@"
+git "$git_command" "$@"
 status=$?
 
 if [ "$status" -ne 0 ]; then
