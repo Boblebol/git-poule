@@ -118,6 +118,8 @@ a {
   right: clamp(-110px, -4vw, 28px);
   bottom: clamp(-120px, -12vw, -40px);
   width: min(720px, 58vw);
+  height: auto;
+  aspect-ratio: 1 / 1;
   max-width: none;
   filter: drop-shadow(12px 18px 0 rgba(21, 21, 21, 0.16));
 }
@@ -302,19 +304,107 @@ code {
 }
 
 .site-footer {
-  padding: 30px clamp(18px, 5vw, 72px);
+  padding: 24px clamp(18px, 5vw, 72px);
   background: var(--ink);
   color: var(--white);
 }
 
 .site-footer p {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
+  color: #aab8c7;
 }
 
 .site-footer a {
-  color: #9fd1ff;
-  font-weight: 900;
+  color: #ffd447;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.ae-cross-footer {
+  border-top: 2px solid var(--line);
+  background: #101820;
+  padding: 24px clamp(18px, 5vw, 72px);
+  font-size: 13px;
+  color: #8c9ba5;
+  width: 100%;
+}
+
+.ae-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.ae-footer-identity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ae-footer-logo {
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.ae-footer-logo em {
+  font-style: normal;
+  color: var(--yellow);
+}
+
+.ae-footer-tagline {
+  color: #8c9ba5;
+}
+
+.ae-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ae-footer-links a {
+  color: #8c9ba5;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.ae-footer-links a:hover {
+  color: #ffffff;
+}
+
+.sticky-mobile-cta {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sticky-mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    display: flex;
+    gap: 10px;
+    padding: 12px 18px;
+    background: rgba(255, 250, 242, 0.94);
+    backdrop-filter: blur(12px);
+    border-top: 2px solid var(--line);
+  }
+
+  .sticky-mobile-cta .button {
+    flex: 1;
+    margin: 0;
+    min-height: 44px;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 860px) {

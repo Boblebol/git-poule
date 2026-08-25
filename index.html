@@ -3,13 +3,33 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="git-poule ajoute un retour sonore aviaire a git pull et git cherry-pick.">
-    <title>git-poule - Poule et Picore</title>
+    <title>git-poule - Poule et Picore | Le pull sonore pour Git</title>
+    <meta name="description" content="git-poule et git-picore ajoutent un retour sonore aviaire et héroïque à git pull et git cherry-pick. Coq triomphant au succès, poule KO à l'échec.">
+    <meta name="author" content="Alexandre Enouf">
+    <link rel="canonical" href="https://boblebol.github.io/git-poule/">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boblebol.github.io/git-poule/">
+    <meta property="og:title" content="git-poule - Le pull qui chante, le cherry-pick qui picore">
+    <meta property="og:description" content="Wrapper Git léger avec retour sonore et visuel : cocorico quand tout va bien, poule KO quand Git dit non.">
+    <meta property="og:image" content="https://boblebol.github.io/git-poule/assets/git-poule-mascot.png">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="git-poule - Poule et Picore">
+    <meta name="twitter:description" content="git pull et git cherry-pick avec un retour sonore et aviaire en cas de succès ou d'échec.">
+    <meta name="twitter:image" content="https://boblebol.github.io/git-poule/assets/git-poule-mascot.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="site-header" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="git-poule home">
+    <header class="site-header" aria-label="Navigation principale">
+      <a class="brand" href="#top" aria-label="git-poule accueil">
         <span class="brand-mark">gp</span>
         <span>git-poule</span>
       </a>
@@ -17,13 +37,14 @@
         <a href="#install">Installer</a>
         <a href="#picore">Picore</a>
         <a href="#ko">Mode KO</a>
-        <a href="https://github.com/Boblebol/git-poule" aria-label="Dépôt GitHub">GitHub</a>
+        <a href="legal.html">Mentions Légales</a>
+        <a href="https://github.com/Boblebol/git-poule" target="_blank" rel="noopener" aria-label="Dépôt GitHub">GitHub</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <img class="hero-mascot" src="assets/git-poule-mascot.png" alt="Blue white red git-poule chicken mascot">
+        <img class="hero-mascot" src="assets/git-poule-mascot.png" alt="Mascotte officielle git-poule bleu blanc rouge" width="720" height="720">
         <div class="hero-copy">
           <p class="eyebrow">Le pull qui chante, le cherry-pick qui picore</p>
           <h1 id="hero-title">Unicorn? Non. Poule.</h1>
@@ -37,7 +58,7 @@
         </div>
       </section>
 
-      <section class="terminal-band" id="demo" aria-label="git-poule terminal demo">
+      <section class="terminal-band" id="demo" aria-label="Démo terminal git-poule">
         <div class="terminal">
           <div class="terminal-top">
             <span></span>
@@ -69,7 +90,7 @@ git picore abc123</code></pre>
         </div>
       </section>
 
-      <section class="picore-band" id="picore" aria-label="git-picore cherry-pick mode">
+      <section class="picore-band" id="picore" aria-label="Mode cherry-pick git-picore">
         <div class="picore-copy">
           <p class="section-kicker">Nouveau dans le poulailler</p>
           <h2>Cherry-pick? Picore.</h2>
@@ -91,7 +112,7 @@ git picore abc123</code></pre>
         `---'</code></pre>
       </section>
 
-      <section class="ko-band" id="ko" aria-label="KO failure mode">
+      <section class="ko-band" id="ko" aria-label="Mode échec KO">
         <div class="ko-copy">
           <p class="section-kicker">Mode catastrophe contrôlée</p>
           <h2>Quand Git rate, la poule tombe.</h2>
@@ -110,12 +131,36 @@ fatal: Not possible to fast-forward, aborting.
       </section>
     </main>
 
+    <div class="sticky-mobile-cta" aria-label="Actions rapides mobile">
+      <a class="button primary" href="#copy-install">Installer git-poule</a>
+      <a class="button secondary" href="#demo">Démo</a>
+    </div>
+
     <footer class="site-footer">
       <p>
         Pondu avec panache par
-        <a href="https://alexandre-enouf.fr">Alexandre Enouf</a>.
+        <a href="https://alexandre-enouf.fr" target="_blank" rel="noopener">Alexandre Enouf</a>.
         Si le poulet picore ton commit, c'est qu'il avait raison depuis le début.
+        · <a href="legal.html">Mentions légales &amp; Confidentialité</a>
       </p>
+    </footer>
+
+    <footer class="ae-cross-footer">
+      <div class="ae-footer-inner">
+        <div class="ae-footer-identity">
+          <a href="https://alexandre-enouf.fr/" class="ae-footer-logo" target="_blank" rel="noopener">
+            Alexandre <em>Enouf</em>
+          </a>
+          <span class="ae-footer-tagline">· Développeur produit &amp; Builder IA · Paris, France</span>
+        </div>
+        <div class="ae-footer-links">
+          <a href="https://alexandre-enouf.fr/#lab" target="_blank" rel="noopener">⚡ Lab &amp; Projets</a>
+          <a href="https://alexandre-enouf.fr/blog/" target="_blank" rel="noopener">📖 Blog</a>
+          <a href="https://github.com/Boblebol" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/alexandreenouf-47834990" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:alexandre.enouf@gmail.com">Contact</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
