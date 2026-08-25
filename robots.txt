@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boblebol.github.io/git-poule/sitemap.xml
