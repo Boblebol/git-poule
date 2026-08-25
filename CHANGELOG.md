@@ -10,13 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.0] - 2026-08-25
 
 ### Added
-- **Google Analytics GA4** : intégration sécurisée via secret GitHub (`GA_MEASUREMENT_ID`) injecté au build en mode Cookieless (respect RGPD/CNIL sans bandeau cookie intrusif).
-- **Universal Custom Event Tracking** : dispatch d'événements (`window.trackEvent`) pour les interactions clés (clics CTAs, commande d'installation, démo sonore, liens sortants).
-- **CI & Quality Gates** : pipeline GitHub Actions (`.github/workflows/ci.yml`) exécutant l'ensemble de la suite de tests unitaires et d'intégration sur `push` et `pull_request`.
-- **Lighthouse CI** : audits de performance et qualité automatisés Mobile & Desktop avec budgets stricts (>=90/95) et publication automatique de rapports Markdown enrichis en commentaire des Pull Requests.
-- **Gouvernance Open-Source** : ajout de `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` (Contributor Covenant v2.1), templates d'Issues (Bug & Feature) et template de Pull Request avec diagrammes Mermaid.
-- **Cross-Portfolio Footer** : intégration du footer unifié Alexandre Enouf avec liens écosystème Lab, Blog, LinkedIn et GitHub.
-- **Web & SEO Standards** : balises Open Graph (Facebook, LinkedIn), Twitter Cards, canonical link, `robots.txt`, `sitemap.xml`, et attributs de dimensions/priorité (`fetchpriority="high"`) sur la mascotte.
+- **Production Web Release & Ship Checklist** :
+  - Pages statiques et légales standardisées : `404.html` custom avec retour d'erreur stylisé et `legal.html` (mentions légales & politique de confidentialité conforme RGPD / CNIL).
+  - SEO & Social Graph complets : balises Open Graph, Twitter Cards, canonical link `https://boblebol.github.io/git-poule/`, et favicon vectoriel `favicon.svg`.
+  - Indexation moteurs de recherche : `robots.txt` et `sitemap.xml` configurés.
+  - Mobile UX : barre d'action CTA sticky mobile avec `backdrop-blur`.
+  - Footer unifié Alexandre Enouf connecté à l'écosystème portfolio (Lab, Blog, GitHub, LinkedIn).
+- **Google Analytics GA4** : intégration sécurisée via secret GitHub (`GA_MEASUREMENT_ID`) injecté au build en mode Cookieless.
+- **Universal Custom Event Tracking** : dispatch d'événements (`window.trackEvent`) pour les interactions clés.
+- **CI & Quality Gates** : pipeline GitHub Actions (`.github/workflows/ci.yml`) exécutant l'ensemble de la suite de tests.
+- **Lighthouse CI** : audits de performance et qualité automatisés Mobile & Desktop avec budgets stricts (>=90/95).
+- **Gouvernance Open-Source** : ajout de `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, templates d'Issues et de PR.
 
 ### Fixed
 - Découverte et résolution du chemin des fichiers sons WAV lorsque la variable `GIT_POULE_SOUND_DIR` est explicitement définie.
