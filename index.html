@@ -23,6 +23,51 @@
 
     <title>git-poule - Poule et Picore</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Analytics GA4 (Cookieless & RGPD compliant) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Universal custom event tracker
+      window.trackEvent = function(eventName, eventParams) {
+        try {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, eventParams || {});
+          }
+        } catch (e) {}
+      };
+
+      const gaId = '__GA_MEASUREMENT_ID__';
+      if (gaId && gaId !== '__GA_MEASUREMENT_ID__' && !gaId.startsWith('{{')) {
+        gtag('consent', 'default', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'denied'
+        });
+        gtag('js', new Date());
+        gtag('config', gaId, {
+          'anonymize_ip': true,
+          'client_storage': 'none'
+        });
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+        document.head.appendChild(script);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-track]').forEach(el => {
+          el.addEventListener('click', () => {
+            const eventName = el.getAttribute('data-track');
+            const eventCategory = el.getAttribute('data-category') || 'engagement';
+            window.trackEvent(eventName, { event_category: eventCategory });
+          });
+        });
+      });
+    </script>
   </head>
   <body>
     <header class="site-header" aria-label="Primary navigation">
@@ -31,10 +76,10 @@
         <span>git-poule</span>
       </a>
       <nav>
-        <a href="#install">Installer</a>
-        <a href="#picore">Picore</a>
-        <a href="#ko">Mode KO</a>
-        <a href="https://github.com/Boblebol/git-poule" aria-label="Dépôt GitHub" target="_blank" rel="noopener">GitHub</a>
+        <a href="#install" data-track="click_nav_install">Installer</a>
+        <a href="#picore" data-track="click_nav_picore">Picore</a>
+        <a href="#ko" data-track="click_nav_ko">Mode KO</a>
+        <a href="https://github.com/Boblebol/git-poule" aria-label="Dépôt GitHub" target="_blank" rel="noopener" data-track="click_github_repo">GitHub</a>
       </nav>
     </header>
 
@@ -48,8 +93,8 @@
             `git pull` et `git cherry-pick`, mais avec un coq quand tout va bien et une poule KO quand Git dit non.
           </p>
           <div class="hero-actions" id="install">
-            <a class="button primary" href="#copy-install">Installer la bête</a>
-            <a class="button secondary" href="#demo">Voir le cot cot</a>
+            <a class="button primary" href="#copy-install" data-track="click_cta_install">Installer la bête</a>
+            <a class="button secondary" href="#demo" data-track="click_cta_demo">Voir le cot cot</a>
           </div>
         </div>
       </section>
@@ -131,23 +176,23 @@ fatal: Not possible to fast-forward, aborting.
       <div class="site-footer-pitch">
         <p>
           Pondu avec panache par
-          <a href="https://alexandre-enouf.fr">Alexandre Enouf</a>.
+          <a href="https://alexandre-enouf.fr" data-track="click_footer_alexandre">Alexandre Enouf</a>.
           Si le poulet picore ton commit, c'est qu'il avait raison depuis le début.
         </p>
       </div>
       <div class="ae-footer-inner">
         <div class="ae-footer-identity">
-          <a href="https://alexandre-enouf.fr/" class="ae-footer-logo" target="_blank" rel="noopener">
+          <a href="https://alexandre-enouf.fr/" class="ae-footer-logo" target="_blank" rel="noopener" data-track="click_footer_logo">
             Alexandre <em>Enouf</em>
           </a>
           <span class="ae-footer-tagline">· Développeur produit & Builder IA · Paris, France</span>
         </div>
         <div class="ae-footer-links">
-          <a href="https://alexandre-enouf.fr/#lab" target="_blank" rel="noopener">⚡ Lab & Projets</a>
-          <a href="https://alexandre-enouf.fr/blog/" target="_blank" rel="noopener">📖 Blog</a>
-          <a href="https://github.com/Boblebol" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/alexandreenouf-47834990" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:alexandre.enouf@gmail.com">Contact</a>
+          <a href="https://alexandre-enouf.fr/#lab" target="_blank" rel="noopener" data-track="click_footer_lab">⚡ Lab & Projets</a>
+          <a href="https://alexandre-enouf.fr/blog/" target="_blank" rel="noopener" data-track="click_footer_blog">📖 Blog</a>
+          <a href="https://github.com/Boblebol" target="_blank" rel="noopener" data-track="click_footer_github">GitHub</a>
+          <a href="https://www.linkedin.com/in/alexandreenouf-47834990" target="_blank" rel="noopener" data-track="click_footer_linkedin">LinkedIn</a>
+          <a href="mailto:alexandre.enouf@gmail.com" data-track="click_footer_email">Contact</a>
         </div>
       </div>
     </footer>

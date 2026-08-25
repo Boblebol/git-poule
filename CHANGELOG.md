@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Google Analytics GA4 with build-time secret injection (`GA_MEASUREMENT_ID`) in Cookieless / RGPD compliant mode.
+- Universal custom event tracking (`window.trackEvent`) on CTAs, install commands, sound demos, and outbound links.
 - CI & Quality Gates workflow (`.github/workflows/ci.yml`) running test suites on push and PR.
 - Automated Mobile & Desktop Lighthouse CI audits with strict budgets (>=90/95) and automated rich PR summaries.
 - Standard Open Source governance (`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, PR & Issue templates).

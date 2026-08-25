@@ -30,6 +30,14 @@ jobs:
       - name: Test site
         run: bash test/site-test.sh
 
+      - name: Inject Google Analytics GA4 ID
+        env:
+          GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+        run: |
+          if [ -n "$GA_MEASUREMENT_ID" ]; then
+            python3 scripts/inject_analytics.py --ga-id "$GA_MEASUREMENT_ID"
+          fi
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
