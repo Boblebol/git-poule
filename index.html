@@ -6,6 +6,7 @@
     <meta name="description" content="git-poule ajoute un retour sonore aviaire a git pull et git cherry-pick. Cocorico sur succes, poule KO sur echec.">
     <meta name="author" content="Alexandre Enouf">
     <link rel="canonical" href="https://boblebol.github.io/git-poule/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
@@ -85,7 +86,10 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <img class="hero-mascot" src="assets/git-poule-mascot.png" alt="Blue white red git-poule chicken mascot" width="1254" height="1254" fetchpriority="high">
+        <picture class="hero-mascot-wrapper">
+          <source srcset="assets/git-poule-mascot.webp" type="image/webp">
+          <img class="hero-mascot" src="assets/git-poule-mascot-opt.png" alt="Blue white red git-poule chicken mascot" width="720" height="720" fetchpriority="high">
+        </picture>
         <div class="hero-copy">
           <p class="eyebrow">Le pull qui chante, le cherry-pick qui picore</p>
           <h1 id="hero-title">Unicorn? Non. Poule.</h1>
