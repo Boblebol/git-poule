@@ -1,6 +1,7 @@
 # git-poule 🐔
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/Boblebol/git-poule/actions/workflows/ci.yml/badge.svg)](https://github.com/Boblebol/git-poule/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/Boblebol/git-poule/actions/workflows/pages.yml/badge.svg)](https://github.com/Boblebol/git-poule/actions/workflows/pages.yml)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
