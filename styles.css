@@ -315,6 +315,28 @@ code {
   color: #aab8c7;
 }
 
+.site-footer-quote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  line-height: 1.5;
+}
+
+.site-footer-quote span {
+  display: inline-block;
+}
+
+.site-footer-subquote {
+  color: #d8e2ec;
+  font-style: italic;
+}
+
+.site-footer-legal a {
+  color: #9fd1ff;
+  font-size: 14px;
+}
+
 .site-footer a {
   color: #ffd447;
   font-weight: 800;
